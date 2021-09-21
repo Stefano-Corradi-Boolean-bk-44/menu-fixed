@@ -1,0 +1,83 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* proprietà da inserire nell tag HTML per creare il movimento con le ancore */
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+p{
+  font-size: 20px;
+  line-height: 40px;
+}
+h2{
+  margin: 20px 0;
+}
+
+
+.main-header{
+  /* con fixed teniamo bloccato l'header quando scrolla la pagina */
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%; /* con fixed siamo costretti a mettere width 100% perché non viene più visto in automantico come negli elementi block*/
+  height: 70px;
+  background-color: #CDCDCD;
+  text-align: center;
+}
+
+.main-header nav img{
+  height: 32px;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+
+.main-header nav ul{
+  list-style: none;
+}
+
+.main-header nav li{
+  display: inline-block;
+  line-height: 70px;
+  margin-right: 20px;
+}
+
+.main-header nav li a{
+  display: inline-block; /* per permettere al tag a di avere il bg alto quanto il suo contenitore */
+  text-decoration: none;
+  font-size: 20px;
+  padding: 0 5px;
+  color: #436BE1;
+  line-height: 70px;
+}
+
+.main-header nav li a:hover{
+  background-color: grey;
+  
+}
+
+nav a.active{
+  border-bottom: 3px solid #67EA67;
+}
+
+/* avendo l'header fixed l'elemeto sottostante si deve posizionare almeno con un margin dell'alteza dell'elemnto fixed*/
+main{
+  margin-top: 70px;
+}
+
+/* trick per far si che gli elemnti ancorati non finiscano dietro l'header fixed */
+section::before{
+  content: '';
+  display: block;
+  /* 70 px perché uil nostro header fixed è di height: 70px */
+  height: 70px;
+  margin: -70px 0 0;
+}
